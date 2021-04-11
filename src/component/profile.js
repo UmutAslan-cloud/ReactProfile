@@ -1,7 +1,8 @@
-
+import { render, screen } from '@testing-library/react'; 
 export default function Profil(){
     return (<div>
       <header>
+          <h2 className="header">Umut Aslan</h2>
           <p>Merhaba ben Umut Aslan.1995 Istanbul doğumluyum.Ilkokul ve Lise eğitimimi Türkiyede tamamladıktan sonra Çin Halk Cumhuriyetine
           Üniversite eğitimi için gittim.Wuhan Universitesi Çin Dili ve Edebiyatı Fakültesinde 4 senelik eğitimimi tamamladıktan sonra ticaret hayatına başladım
           Çeşitli firmaların Çin temsilcisi olarak çalıştım.Sonrasında İsviçreye taşındım ve şuan IT alanında eğitim goruyorum.
@@ -43,3 +44,15 @@ export default function Profil(){
                 </header>
     </div>)
 }
+
+
+test ('test Profile',()=>{
+    render (<Profil />);
+    const headElement=screen.getByRole('heading');
+    expect(headElement).toBeInTheDocument();
+    expect(headElement).toHaveClass('header')
+    screen.debug()
+    
+  }
+  
+  )
